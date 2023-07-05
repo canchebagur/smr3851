@@ -87,4 +87,20 @@ Select the **Start** icon (green triangle) in the bottom left of the OpenMV IDE;
 
 ![OpenMV IDE](/assets/OpenMV_IDE_03.png)
 
-Now your Nicla Vision is all set up and working!
+Now your Nicla Vision is all set up and working! Now let's create an image dataset to build a TinyML model. We will train a model that can recognize Nano 33 BLE Sense and Xiao boards, so we must capture many images of our targets and some of the background. So we will end up with **three data classes**:
+
+1. `nano`
+2. `xiao`
+3. `background`
+
+We will take about 30 images of each board and the background from different angles and with different lighting (if possible). The more variety, the more accurate the model will be. Please, [**upload into this shared Google Drive**](https://drive.google.com/drive/folders/1vlGB5eWHNCd1uyAKEkL9GnH6OnWZhWGa?usp=sharing) your images.
+
+Create a directory on your computer to store the images taken with your Nicla Vision board. With your board connected to the OpenMV IDE, click the connect button again and start the camera using the start button. Navigate to **Tools > Dataset Editor > New Dataset**. A new dialogue box will open; choose the dataset directory you created before. Close the `dataset_capture_script.py` file that opens in the OpenMV IDE code editor. Close this script, as we already have a capture script setup. Select the **New Class Folder** button in the middle left side of the OpenMV IDE:
+
+![OpenMV IDE](/assets/OpenMV_IDE_04.png)
+
+Give the class a name (`nano`, `xiao`, or `background`), and then select the **Capture Data** button in the middle left side of the OpenMV IDE: 
+
+![OpenMV IDE](/assets/OpenMV_IDE_05.png)
+
+Move the camera to a different view and click the capture again. Keep repeating this with different views until you have about 30 to 50 images of your target object. Once you have enough pictures of your first target, create a new data class and capture images of the next target; also, remember the background!
