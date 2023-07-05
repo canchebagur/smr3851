@@ -59,8 +59,32 @@ With OpenMV running, connect your Nicla Vision board to your computer. Select th
 
 ![OpenMV IDE](/assets/OpenMV_IDE_01.png)
 
-The following connection dialogue will open, select "**Install the latest release firmware**" option. 
+The following connection dialogue will open; select the "**Install the latest release firmware**" option. 
 
 ![OpenMV IDE](/assets/OpenMV_IDE_02.png)
 
 ***Note: **DO NOT ERASE THE INTERNAL FILE SYSTEM of your Nicla Vision board.*****
+
+Now, navigate to select **File > New File** and add the following code into the OpenMV code editor window and save it as `nicla_vision_test.py`. The following code will start the Nicla Vision camera and display the feed in the OpenMV IDE's frame buffer. You will also use this code to capture frames for the ML model:
+
+```python
+import sensor, image, time
+
+sensor.reset()
+sensor.set_pixformat(sensor.RGB565)
+sensor.set_framesize(sensor.QVGA)
+sensor.skip_frames(time = 2000)
+
+clock = time.clock()
+
+while(True):
+    clock.tick()
+    img = sensor.snapshot()
+    print(clock.fps())
+```
+
+Select the **Start** icon (green triangle) in the bottom left of the OpenMV IDE; the camera feed will display in the OpenMV IDE's frame buffer (notice that the dynamic color balance is also shown). 
+
+![OpenMV IDE](/assets/OpenMV_IDE_03.png)
+
+Now your Nicla Vision is all set up and working!
